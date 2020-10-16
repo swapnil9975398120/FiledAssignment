@@ -1,0 +1,16 @@
+.asterisk {
+    color :red;
+}
+
+.form-errors  {
+    color : red;
+}
+
+.amountValidationMessage {
+    color :red;
+}
+
+.input-group-append {
+    float: right;
+    height: 29px;
+}

@@ -1,0 +1,135 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+                <form [formGroup]='appForm'>
+                        <div class="form-group">
+                          <label for="email">Credit Card Number:</label>
+                          <label class="asterisk">*</label>
+
+                          <input type="text" class="form-control" formControlName="cardNumber" placeholder="Enter credit card number" id="email">
+                        </div>
+                        <div class="form-errors"
+                             *ngIf="appForm.controls.cardNumber.errors  && (appForm.controls.cardNumber.dirty || appForm.controls.cardNumber.touched)">
+                            <div [hidden]="!appForm.controls.cardNumber.errors.required" translate>
+                                    Credit Card Number is required.
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                              <label for="email">Card Holder:</label>
+                              <label class="asterisk">*</label>
+                              <input type="text" class="form-control" formControlName="cardHolder"  placeholder="Enter card holder" id="email">
+                         </div>
+                         <div class="form-errors"
+                         *ngIf="appForm.controls.cardHolder.errors  && (appForm.controls.cardHolder.dirty || appForm.controls.cardHolder.touched)">
+                        <div [hidden]="!appForm.controls.cardHolder.errors.required" translate>
+                                Card Holder Number is required.
+                        </div>
+                        </div>
+                         <div class="form-group">
+                              <label for="email">Expiration Date:</label>
+                              <label class="asterisk">*</label>
+                              <input type="date" class="form-control" formControlName="expirationDate" id="txtDate" ngbDatepicker  #d="ngbDatepicker"  placeholder="Enter expiration date" id="email">
+                          
+                         </div>
+                         <div class="form-errors"
+                         *ngIf="appForm.controls.expirationDate.errors  && (appForm.controls.expirationDate.dirty || appForm.controls.expirationDate.touched)">
+                        <div [hidden]="!appForm.controls.expirationDate.errors.required" translate>
+                                Expiration Date Number is required.
+                        </div>  
+                        </div>  
+                         <div class="form-group">
+                              <label for="pwd">Security Code:</label>
+                              <input type="text" class="form-control" formControlName="securityCode" placeholder="Enter security code" id="pwd">
+                         </div>
+                         <div class="form-errors"
+                              *ngIf="appForm.controls.securityCode.errors  && (appForm.controls.securityCode.dirty || appForm.controls.securityCode.touched)">
+                        <div [hidden]="!appForm.controls.securityCode.errors.maxlength" translate>
+                                Security Code should be 3 digit.
+                         </div>
+                         </div>  
+                         <div class="form-group">
+                              <label for="pwd">Amount:</label>
+                              <label class="asterisk">*</label>
+                              <input type="number" class="form-control" formControlName="amount" (keyup)="amountValid()"  placeholder="Enter amount" id="pwd">
+                         </div>
+                         <div class="form-errors"
+                         *ngIf="appForm.controls.amount.errors  && (appForm.controls.amount.dirty || appForm.controls.amount.touched)">
+                        <div [hidden]="!appForm.controls.amount.errors.required" translate>
+                                Amount is required.
+                        </div>
+                       
+                       </div>
+                       <div *ngIf="displayZeroValidation" class="amountValidationMessage" translate>
+                            Amount shoud be greater than zero.
+                       </div>
+                       
+                        <button type="submit" class="btn btn-primary" [disabled]="!appForm.valid || displayZeroValidation" (click)="addAppFormInfo()" >Submit</button>
+                        <br><br>
+                        <div class="container">
+                              <table class="table table-bordered">
+                                  <thead>
+                                  <tr>
+                                      <th>Card Number</th>
+                                      <th>Card Holder</th>
+                                      <th>Expiration Date</th>
+                                      <th>Security Code</th>
+                                      <th>Amount</th>
+                                  </tr>
+                                  </thead>
+                                  <tbody>
+                                  <tr *ngFor="let data of retriveData">
+                                      <td>{{data.cardNumber}}</td>
+                                      <td>{{data.cardHolder}}</td>
+                                      <td>{{data.expirationDate.day}}/{{data.expirationDate.month}}/{{data.expirationDate.year}}</td>
+                                      <td>{{data.securityCode}}</td>
+                                      <td>{{data.amount}}</td>
+
+                      
+                                  </tr>            
+                                </tbody>
+                              </table>
+                        </div>
+                </form>
+        </div>
+        <div class="col-md-3"></div>
+
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                       
+
+
+
+
+
+
+
+
+
+
+
+
